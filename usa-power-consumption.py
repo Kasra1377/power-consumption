@@ -60,8 +60,6 @@ html_content = ("""
 * [1. Predicting with XGBoost Regressor](#9)
 * [2. Predicting with Linear Regression](#10)
 * [3. Predicting with Decision Tree](#11)
-* [4. Predicting with Random Forest](#12)
-* [5. Predicting with Gradient Boosting Machine](#13)
 
 """)
 st.markdown(html_content, unsafe_allow_html = True)
