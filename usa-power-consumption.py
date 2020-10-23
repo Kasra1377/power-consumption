@@ -71,12 +71,12 @@ st.subheader('PJM Interconnection')
 html_button = '<a href="#top" class="btn btn-primary btn-sm" role="button" aria-pressed="true" style="color:white" data-toggle="popover" title="go to Colors">Go to Table of Contents</a>'
 st.markdown(html_button, unsafe_allow_html = True)
 
-image = Image.open('C:/Users/Kasra/Desktop/images/Second Project/13.png')
+image = Image.open('13.png')
 st.image(image , use_column_width = True)
 
 st.write('PJM Interconnection LLC (PJM) is a regional transmission organization (RTO) in the United States. It is part of the Eastern Interconnection grid operating an electric transmission system serving all or parts of Delaware, Illinois, Indiana, Kentucky, Maryland, Michigan, New Jersey, North Carolina, Ohio, Pennsylvania, Tennessee, Virginia, West Virginia, and the District of Columbia.')
 
-image = Image.open('C:/Users/Kasra/Desktop/images/Second Project/14.png')
+image = Image.open('14.png')
 st.image(image , use_column_width = True)
 
 st.write('In this kernel we are going to analyze the dataset that PJM organization provided for us...')
@@ -123,7 +123,7 @@ st.markdown(html_button, unsafe_allow_html = True)
 st.write('Lets import the dataset:')
 
 with st.echo():
-    PJMW_hourly = pd.read_csv('E:/Datasets/Power Consumption US/PJMW_hourly.csv')
+    PJMW_hourly = pd.read_csv('PJMW_hourly.csv')
     PJMW_hourly
 
 st.write('* This dataset has `143206` instances and `2` features.It is worth mentioning that this power consumption recorded every **1 hour**.')
@@ -227,7 +227,7 @@ with st.echo():
 
     PJMW_hourly.drop(columns = {'date_offset'} , inplace = True)
 
-PJMW_hourly = pd.read_csv('E:/Datasets/Power Consumption US/usa.csv')
+PJMW_hourly = pd.read_csv('usa.csv')
 PJMW_hourly.drop(columns = {'Unnamed: 0'} , inplace = True)
 
 st.write('And we will get the following result:')
@@ -480,7 +480,7 @@ st.markdown(html_button, unsafe_allow_html = True)
 st.write('Lets import our dataset once more and sorting indices:')
 
 with st.echo():
-    PJMW_hourly = pd.read_csv('E:/Datasets/Power Consumption US/PJMW_hourly.csv' , index_col = [0], parse_dates = [0])
+    PJMW_hourly = pd.read_csv('PJMW_hourly.csv' , index_col = [0], parse_dates = [0])
     PJMW_hourly = PJMW_hourly.sort_index()
 
 st.write('\nAnd droping duplicate indices and keeping the first rows:')
@@ -490,8 +490,8 @@ with st.echo():
 st.write('\nSpiliting the dataset into the training set and testing set by a `2017-01-01` date.In other words we have the data before `2017-01-01` and we are going to predict the power consumption after this date.')
 
 
-PJMW_hourly_train = pd.read_csv('E:/Datasets/Power Consumption US/usa-train.csv')
-PJMW_hourly_test = pd.read_csv('E:/Datasets/Power Consumption US/usa-test.csv' )
+PJMW_hourly_train = pd.read_csv('usa-train.csv')
+PJMW_hourly_test = pd.read_csv('usa-test.csv' )
 
 st.write('Training set:')
 PJMW_hourly_train
@@ -512,7 +512,7 @@ st.write('And lets plot the merged datasets that included with `Training set` an
 with st.echo():
     PJMW_hourly_test.plot(figsize=(15,5), title='Power consumption', style='.')
 
-image = Image.open('C:/Users/Kasra/Desktop/images/Second Project/1.png')
+image = Image.open('1.png')
 st.image(image , use_column_width = True)
 #st.write('![alt text](https://img.techpowerup.org/201021/1.png "Power Consumption")')
 
@@ -571,7 +571,7 @@ st.write('And plot the feature importance :')
 with st.echo():
     plot_importance(reg , height=0.9)
 
-image = Image.open('C:/Users/Kasra/Desktop/images/Second Project/2.png')
+image = Image.open('2.png')
 st.image(image , use_column_width = True)
 
 st.write('* In this feature importance plot, If the feature has a high value(`day of year` and `year` for instance), it means that it has a big role in our model and the model mostly make the decisions and predictions by this feature and on the other side, if a feature has a low value(`quarter` and `month`) it means that its value does not affect on our model prediction at all and it is less important for our model.')
@@ -584,7 +584,7 @@ with st.echo():
     PJMW_hourly_all[['PJMW_MW','MW_Prediction']].plot(figsize=(15, 5) , title = 'Power Consumption Prediction by XGBoost')
     plt.show()
 
-image = Image.open('C:/Users/Kasra/Desktop/images/Second Project/3.png')
+image = Image.open('3.png')
 st.image(image , use_column_width = True)
 
 st.write('* As we can see the actual data represented by **blue** color and predicted data represented by **red** color.As we can see this `XGBoost` algorithm has not a bad performance at all and we can count on this models predictions.')
@@ -600,7 +600,7 @@ with st.echo():
     ax.set_ylim(0 , 10000)
     plt.suptitle('January 2017 Forecast vs Actual')
 
-image = Image.open('C:/Users/Kasra/Desktop/images/Second Project/4.png')
+image = Image.open('4.png')
 st.image(image , use_column_width = True)
 
 st.write('---')
@@ -633,7 +633,7 @@ with st.echo():
     PJMW_hourly_all[['PJMW_MW','MW_Prediction']].plot(figsize=(15, 5) , title =  'Power Consumption Prediction by Linear Regression')
     plt.show()
 
-image = Image.open('C:/Users/Kasra/Desktop/images/Second Project/5.png')
+image = Image.open('5.png')
 st.image(image , use_column_width = True)
 
 with st.echo():
@@ -645,7 +645,7 @@ with st.echo():
     ax.set_ylim(0 , 10000)
     plt.suptitle('January and Feburary 2017 Forecast vs Actuals')
 
-image = Image.open('C:/Users/Kasra/Desktop/images/Second Project/6.png')
+image = Image.open('6.png')
 st.image(image , use_column_width = True)
 st.write('* As we can see this linear regression has a very low performance because of its linear algorithm.')
 
@@ -677,7 +677,7 @@ with st.echo():
     PJMW_hourly_all[['PJMW_MW','MW_Prediction']].plot(figsize=(15, 5) , title = 'Power consumption Prediction by Decision Tree')
     plt.show()
 
-image = Image.open('C:/Users/Kasra/Desktop/images/Second Project/7.png')
+image = Image.open('7.png')
 st.image(image , use_column_width = True)
 
 
@@ -690,7 +690,7 @@ with st.echo():
     ax.set_ylim(0 , 10000)
     plt.suptitle('January 2017 Forecast vs Actuals')
 
-image = Image.open('C:/Users/Kasra/Desktop/images/Second Project/8.png')
+image = Image.open('8.png')
 st.image(image , use_column_width = True)
 
 st.write('---')
@@ -721,7 +721,7 @@ with st.echo():
     PJMW_hourly_all[['PJMW_MW','MW_Prediction']].plot(figsize=(15, 5) , title = 'Power consumption Prediction by Decision Tree')
     plt.show()
 
-image = Image.open('C:/Users/Kasra/Desktop/images/Second Project/9.png')
+image = Image.open('9.png')
 st.image(image , use_column_width = True)
 
 with st.echo():
@@ -733,7 +733,7 @@ with st.echo():
     ax.set_ylim(0 , 10000)
     plt.suptitle('January 2017 Forecast vs Actuals')
 
-image = Image.open('C:/Users/Kasra/Desktop/images/Second Project/10.png')
+image = Image.open('10.png')
 st.image(image , use_column_width = True)
 
 st.write('---')
@@ -764,7 +764,7 @@ with st.echo():
     PJMW_hourly_all[['PJMW_MW','MW_Prediction']].plot(figsize=(15, 5), title = 'Power Consumption Prediction by Gradient Boosting Machine')
     plt.show()
 
-image = Image.open('C:/Users/Kasra/Desktop/images/Second Project/11.png')
+image = Image.open('11.png')
 st.image(image , use_column_width = True)
 
 
@@ -777,5 +777,5 @@ with st.echo():
     ax.set_ylim(0 , 10000)
     plt.suptitle('January 2017 Forecast vs Actuals')
 
-image = Image.open('C:/Users/Kasra/Desktop/images/Second Project/12.png')
+image = Image.open('12.png')
 st.image(image , use_column_width = True)
